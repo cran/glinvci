@@ -10,10 +10,12 @@ fit(mod, ...)
 \method{fit}{glinv}(
   mod,
   parinit = NULL,
-  method = "CG",
+  method = "L-BFGS-B",
   lower = -Inf,
   upper = Inf,
   use_optim = FALSE,
+  project = NULL,
+  projectArgs = NULL,
   control = list(),
   ...
 )
@@ -32,6 +34,10 @@ fit(mod, ...)
 \item{upper}{A vector of upper bounds on the parameters.}
 
 \item{use_optim}{If true, use optim's version of \code{L-BFGS-B} and \code{CG}.}
+
+\item{project}{Passed to \code{BBoptim}.}
+
+\item{projectArgs}{Passed to \code{BBoptim}.}
 
 \item{control}{Options to be passed into each the underlying optimisation routine's \code{control}
 argument.}
