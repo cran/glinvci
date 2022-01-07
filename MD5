@@ -1,4 +1,4 @@
-95cc19c3ee286e0681ebc2114b080905 *DESCRIPTION
+a4fbd6b03a794f3a5d23d8bf442d2f57 *DESCRIPTION
 1111667cb9513b22aee87b448562a247 *NAMESPACE
 af101825203f8f531462735bdafcfd9d *R/deriv_missing.R
 6dd865983e7db095826df1197d06750f *R/glinvci.R
@@ -12,7 +12,7 @@ afa0b4f2755cf9d3f19e65855ee56fe0 *cleanup
 e95db292508e87f62fc1cd2fcd169701 *configure
 a1a59caea524cb42c80f9f67da74283e *configure.ac
 c6fff6a2cb37b530560be00185d3994d *inst/doc/Getting_Started.Rnw
-cb3d0e7d2dfa17990cd8b8fefdb9caef *inst/doc/Getting_Started.pdf
+6f2acf1abe95128a85bd7af08eb7ec62 *inst/doc/Getting_Started.pdf
 8ff98e99fba077cbaeab5ef2024f2dd9 *man/fit.glinv.Rd
 18db18afce989fe73a0387de54da3146 *man/get_restricted_ou.Rd
 0f243b6212168514dd03589cb839c46b *man/glinv.Rd
@@ -30,7 +30,7 @@ b6bea8486276c9b3a372bebb98bde818 *man/oupar.Rd
 9598d467771653414fd9e88c0eb6d85d *man/rglinv.Rd
 b7b069dffb56a32bfa8f27f7de3d2fe5 *man/set_tips.Rd
 49f8389f13d27e1229fd8873d5ce46b0 *man/varest.Rd
-50d2db55742a289228215720ad7d1d4b *src/Makevars.in
+78387e7648d77156810a2347cdeb1890 *src/Makevars.in
 dd662af42b2a091501c73208c7f40f76 *src/Makevars.win
 9d1a6624c316bdcc7fd36f656e542c30 *src/chn.f90
 26317f96e673091e1de3eae7f0cb3516 *src/dglinv.f90
@@ -39,7 +39,7 @@ dd662af42b2a091501c73208c7f40f76 *src/Makevars.win
 2228e977ebea8966e27929f43e39cb67 *src/my_pragma.h
 67babfc7a0dccda4c9b4892f3b143368 *src/my_pragma.h.in
 93a4638ce489ce81a02384401634603c *src/oumods.f90
-3eea3a5304fbfef44977b8eedc8ad9b3 *src/phytr.c
+10180ea443ec2fa24ba42a111703ee27 *src/phytr.c
 2ed66c67231a317397b136e05c8b4ad6 *src/test_ieee_c.c
 78b52c7c8d5906a2306ea8c22555d58c *src/test_ieee_fort.f90
 fb25c2a7b3c3b2a1c6daf0bcf7993663 *tests/testthat.R
