@@ -6,12 +6,12 @@
 #' comparative methods. The framework is designed to be flexible enough that the user can
 #' easily specify their own parameterisation and obtain the maximum-likelihood estimates and
 #' confidence intervals of their own parameters.
-#' 
+#'
 #' @author Hao Chi Kiang, \email{hello@hckiang.com}
 #' @docType package
 #' @name glinvci
 #' @useDynLib glinvci, .registration=TRUE
-#' @importFrom utils globalVariables
+#' @importFrom utils globalVariables capture.output str
 NULL
 
 ## This needs to be put in NAMESPACE via @importFrom, otherwise if we use utils:: then we'll
@@ -118,7 +118,7 @@ set_tips.glinv       = function (mod, X) {
   if (misschanged) {
     if (any(dtab == 0))
       stop(sprintf("All dimensions at Node #%d are either lost or missing",
-                   which(dtab == 0)[1]))
+                   which(dtab == 0)[1L]))
     mod$rawmod$dimtab   = dtab
     #mod$rawmod$gaussdim = as.integer(sum(dtab[1:(tree$edge[1,1]-1)]))
     mod$rawmod$gaussdim = as.integer(sum(dtab[1:(.Call(Rgetroot,t(tree$edge))-1)]))
@@ -256,7 +256,7 @@ rglinv.glinv_gauss = function (mod, par, Nsamp=1, simplify=TRUE) {
 #' @references      Mitov V, Bartoszek K, Asimomitis G, Stadler T (2019). “Fast likelihood calculation for multivariate Gaussian phylogenetic models with shifts.” Theor. Popul. Biol.. https://doi.org/10.1016/j.tpb.2019.11.005.
 #' @export
 glinv_gauss = function (tree, x0, dimtab=NULL, X=NULL) {
-  if (!'phylo' %in% class(tree))                stop('The tree must be an ape tree')
+  if (!inherits(tree, 'phylo'))                 stop('The tree must be an ape tree')
   if (!ape::is.rooted(tree))                    stop('The input phylogenetic tree must be rooted')
   if (!is.numeric(x0))                          stop("x0 must be numeric")
   if (! (all(!is.na(x0)) && all(!is.nan(x0))))  stop("x0 must not contain NA or NaN")
@@ -631,6 +631,8 @@ tip_purge.NULL = function (X) NULL
 #' theta = c(0,0)
 #' sig   = matrix(c(0.5,0,0,0.5), k)
 #' sig_x = t(chol(sig))
+#' # glinvci ALWAYS assumes diagonals of sig_x is in log scale.
+#' diag(sig_x) = log(diag(sig_x))
 #' par_init = c(H=diag(H),theta=theta,sig_x=sig_x[lower.tri(sig_x,diag=TRUE)])
 #' print(par_init)
 #' print(lik(mod)(par_init))
@@ -649,7 +651,7 @@ tip_purge.NULL = function (X) NULL
 #' }
 #' @export
 glinv = function (tree, x0, X, parfns=NULL, pardims=NULL, regimes=NULL, parjacs=NULL, parhess=NULL, repar=NULL) {
-  if (!'phylo' %in% class(tree)) stop("`tree` must be of class ape::phylo")
+  if (!inherits(tree, 'phylo'))  stop("`tree` must be of class ape::phylo")
   if (!ape::is.rooted(tree))     stop("Only rooted trees are supported.")
   origtr = tree
   tree = fix_tree(tree)
@@ -1135,6 +1137,14 @@ fit.glinv = function (mod, parinit=NULL, method='L-BFGS-B', lower=-Inf, upper=In
              names(r)[which(names(r) == 'par')]   = 'mlepar'
              names(r)[which(names(r) == 'value')] = 'loglik'
              names(r)[which(names(r) == 'grad')]  = 'score'
+             if (! ('convergence' %in% names(r)) ) {
+               ## Sometimes the library doesn't return a convergence code if it fails, but when
+               ## successful there is always a convergence slot == 0L. So I will manually add back
+               ## the convergence code in case it's missing.
+               ## Example that this happens is when there is an "ABNORMAL_TERMINATION_IN_LNSRCH"
+               ## in the `message` slot.
+               r[['convergence']] = -1L
+             }
              r
            } else if (!use_optim && method=='CG') {
              r = Rcgmin::Rcgmin(par    = parinit,
@@ -1249,7 +1259,7 @@ varest.glinv = function (mod,
       stop('Invalid argument: `fitted`')
   } else
     mlepar = fitted
-  if (class(mod) != 'glinv')
+  if (! inherits(mod, 'glinv'))
     stop('The mod parameter must be of class glinv')
   if (length(mlepar) != mod$nparams)
     stop(sprintf('Your model should have %d parameters but I got %d', mod$nparams, length(mlepar)))
