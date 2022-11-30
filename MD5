@@ -1,4 +1,4 @@
-6527e283f80e68025f1440c79cf20d4c *DESCRIPTION
+5e3bac6bd7325f8ddcdb15dc0072d8dd *DESCRIPTION
 a316b294f5d21cf8d2fdc7c7377076cf *NAMESPACE
 af101825203f8f531462735bdafcfd9d *R/deriv_missing.R
 c5e4e63c7fd32efa7dce5d3fdc9fc3eb *R/glinvci.R
@@ -11,9 +11,9 @@ d28530a7be5fd0e24ed810977695f888 *README.md
 a5d387d581d25fc49dc09cddd6d964bb *build/vignette.rds
 afa0b4f2755cf9d3f19e65855ee56fe0 *cleanup
 e95db292508e87f62fc1cd2fcd169701 *configure
-4effc2bb551af1dacf4a525b7a3540fb *configure.ac
+a3d803a62e17954daa654a7dd37fc24c *configure.ac
 c6fff6a2cb37b530560be00185d3994d *inst/doc/Getting_Started.Rnw
-3e564fcd0d7d92f607682d06c546b444 *inst/doc/Getting_Started.pdf
+7b297e3e461e10b826b8ecc5d57c8a57 *inst/doc/Getting_Started.pdf
 54ae2ac48af675469f8b375737f821fe *man/clone_model.Rd
 8ff98e99fba077cbaeab5ef2024f2dd9 *man/fit.glinv.Rd
 e79b7222828142b46368369ee823cc2b *man/get_restricted_ou.Rd
@@ -40,8 +40,8 @@ dd662af42b2a091501c73208c7f40f76 *src/Makevars.win
 43dee27d6eec260f0c684331a2a18607 *src/my_confinfo.h.in
 2228e977ebea8966e27929f43e39cb67 *src/my_pragma.h
 67babfc7a0dccda4c9b4892f3b143368 *src/my_pragma.h.in
-93a4638ce489ce81a02384401634603c *src/oumods.f90
-b77507adc083784277e28d1bae525a45 *src/phytr.c
+a8d982ebe157206eb5480b34ce637195 *src/oumods.f90
+7ce6207b06d78d3bc2325c0d944138a7 *src/phytr.c
 2ed66c67231a317397b136e05c8b4ad6 *src/test_ieee_c.c
 78b52c7c8d5906a2306ea8c22555d58c *src/test_ieee_fort.f90
 fb25c2a7b3c3b2a1c6daf0bcf7993663 *tests/testthat.R
